@@ -13,7 +13,7 @@ def get_product(productId):
 	if pred is None:
 		return jsonify([])
 	else:
-		return jsonify(pred.serialize())
+		return jsonify(prod.serialize())
 
 
 @bp.route('/product/<int: productId>/comment/', methods=['POST'])
