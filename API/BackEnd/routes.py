@@ -6,7 +6,7 @@ from .models import Comment, Product
 bp = Blueprint('routes', __name__, url_prefix='/routes')
 
 @bp.route('</product/int:productId>', methods=['GET'])
-def get_predictions(productId):
+def get_product(productId):
     
 	prod = Product.query.filter_by(id=productId).first()
 
