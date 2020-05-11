@@ -26,6 +26,16 @@ def add_comment(productId):
 
 	return jsonify({'comment': comment.serialize()})
 
+@bp.route('/search/<string:keyword>', methods=['GET'])
+def search(keyword):
+    if(keyword is not None):
+        # TODO autocomplete api   # TODO category instead of name
+        product_list = Product.query.filter_by(name = keyword).all()
+    else:
+        product_list = []
+    return jsonify([product.serialize() for product in product_list])
+    #return render_template("search.html",product_list=product_list)
+
 @bp.route('/product/<int: productId>/product/', methods=['POST'])
 def add_product(productId):
 	
