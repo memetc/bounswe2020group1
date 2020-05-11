@@ -25,3 +25,14 @@ def add_comment(productId):
 	comment = Comment.create(author=request.json['author'], productId=productId, commentText=request.json['commentText'])
 
 	return jsonify({'comment': comment.serialize()})
+
+@bp.route('/product/<int: productId>/product/', methods=['POST'])
+def add_product(productId):
+	
+    if 'name' not in request.json or 'price' not in request.json or 'location' not in request.json or 'description' not in request.json:
+		abort(400)	
+
+    product = Product.create(id=productId,name=request.json['name'], price=request.json['price'],
+                             description=request.json['description'], location=request.json['location'])
+
+    return jsonify({'product': product.serialize()})
