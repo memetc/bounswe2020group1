@@ -36,7 +36,7 @@ def search(keyword):
     return jsonify([product.serialize() for product in product_list])
     #return render_template("search.html",product_list=product_list)
 
-@bp.route('/product/<int: productId>/product/', methods=['POST'])
+@bp.route('/product/<int: productId>/', methods=['POST'])
 def add_product(productId):
 	
     if 'name' not in request.json or 'price' not in request.json or 'location' not in request.json or 'description' not in request.json:
